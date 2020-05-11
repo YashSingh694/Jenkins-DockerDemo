@@ -1,2 +1,2 @@
-# Jenkins-DockerDemo
-This is for Docker and jenkins demo using Jenkinsfile
+# DockerDemo
+This is for deplooying docker container with the help of Jenkins
