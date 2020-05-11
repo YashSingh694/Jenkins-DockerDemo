@@ -20,7 +20,7 @@ pipeline {
             }
         }
         
-        stage ('Build Servlet Project') {
+        stage ('Create Tomcat Docker Image') {
            steps {
                //for linux and mac
                sh 'docker build -t tomcatwebapp:{$env.BUILD_ID} .'
