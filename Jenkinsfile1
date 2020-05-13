@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
     stages {
@@ -30,7 +29,7 @@ pipeline {
                /*for Windows*/
                //bat "docker build -t tomcatwebapp:${env.BUILD_ID} ."
            }
-           
+         }
         stage ('Running Tomcat Docker Image') {
            steps {
                //input('This is stage two, Do you want to proceed?')
