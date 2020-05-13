@@ -29,8 +29,16 @@ pipeline {
                
                /*for Windows*/
                //bat "docker build -t tomcatwebapp:${env.BUILD_ID} ."
+           }
+           
+        stage ('Running Tomcat Docker Image') {
+           steps {
+               //input('This is stage two, Do you want to proceed?')
+               /*for linux and mac*/
+               sh "docker run -d -p 9090:8080 tomcatwebapp:${env.BUILD_ID}"
                
-               
+               /*for Windows*/
+               //bat "docker run -d -p 9090:8080 tomcatwebapp:${env.BUILD_ID}"
            }
         }
     }
