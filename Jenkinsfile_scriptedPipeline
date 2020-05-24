@@ -1,4 +1,5 @@
-node('Slave1') 
+//node('Slave1') 
+node
 {
     def mvnHome = tool'Maven3.6'
     stage ("checkout") 
