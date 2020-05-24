@@ -1,1 +1,56 @@
-
+node 
+{
+    def mvnHome = tool'Maven3.6'
+    stage ("checkout") 
+    {
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/YashSingh694/Jenkins-DockerDemo.git']]])
+    }
+    
+    stage ("build") 
+    {
+        sh "${mvnHome}/bin/mvn clean install -f ./pom.xml"
+    }
+    
+    stage("Test")
+    {
+        echo "Testing the project.................."
+        sh "mvn clean package"
+        
+    }
+    
+    stage "Archive build output"
+    
+    // Archive the build output artifacts.
+        archiveArtifacts artifacts : '**/*.war'
+    
+     stage ('Create Tomcat Docker Image') {
+           steps {
+               //input('This is stage two, Do you want to proceed?')
+               /*for linux and mac*/
+               sh "docker build -t tomcatwebapp:${env.BUILD_ID} ."
+               
+               /*for Windows*/
+               //bat "docker build -t tomcatwebapp:${env.BUILD_ID} ."
+           }
+         }
+        stage ('Running Tomcat Docker Image') {
+           steps {
+               //input('This is stage two, Do you want to proceed?')
+               /*for linux and mac*/
+               sh "docker run -d -p 9090:8080 tomcatwebapp:${env.BUILD_ID}"
+               
+               /*for Windows*/
+               //bat "docker run -d -p 9090:8080 tomcatwebapp:${env.BUILD_ID}"
+           }
+    
+    
+    stage("Deploy")
+    {
+        echo "Deploying the project.................."
+    }
+    
+    stage("Release")
+    {
+        echo "Releaseing the project.................."
+    }
+}
