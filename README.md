@@ -1,5 +1,6 @@
-# DockerDemo
+# Jenkins-DockerDemo
 This repo we are using demoing Scripted and declrative pipeline formate for using Jenkinsfile.
+In this we have explained that how to create scripted and declrative pipeline and run the pipeline and deployed code on using dockerfile.
 
 1. Jenkinsfile - Plain Declrative pipeline.
 
