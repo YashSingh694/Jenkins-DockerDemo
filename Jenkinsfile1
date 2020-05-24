@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'Slave1' }
     stages {
         stage ('Build Servlet Project') {
             steps {
