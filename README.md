@@ -7,5 +7,5 @@ This repo we are using demoing Scripted and declrative pipeline formate for usin
 
 3. Jenkinsfile3 - Its using scripeted pipeline format. 
 
-Result:- once code is deployed then run,
+Result:- once code is deployed then run :-
 http://localhost:9090/java-tomcat-maven-example/
